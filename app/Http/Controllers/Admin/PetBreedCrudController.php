@@ -1,9 +1,9 @@
 <?php namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\PetTypeRequest;
+use App\Http\Requests\PetBreedRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
-class PetTypeCrudController extends CrudController
+class PetBreedCrudController extends CrudController
 {
 
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
@@ -14,9 +14,9 @@ class PetTypeCrudController extends CrudController
 
     public function setup()
     {
-        $this->crud->setModel("App\Models\PetType");
-        $this->crud->setRoute("admin/pet-type");
-        $this->crud->setEntityNameStrings('pet type', 'pet types');
+        $this->crud->setModel("App\Models\PetBreed");
+        $this->crud->setRoute("admin/pet-breed");
+        $this->crud->setEntityNameStrings('pet breed', 'pet breeds');
     }
 
     public function setupListOperation()
@@ -26,33 +26,19 @@ class PetTypeCrudController extends CrudController
             'label' => __('Title'),
         ]);
         $this->crud->addColumn([
-            'name' => 'description',
-            'label' => __('Description'),
+            'name' => 'status',
+            'label' => __('Status'),
         ]);
     }
 
     public function setupCreateOperation()
     {
-        $this->crud->setValidation(PetTypeRequest::class);
+        $this->crud->setValidation(PetBreedRequest::class);
 
         $this->crud->addField([
             'name' => 'title',
             'type' => 'text',
             'label' => "Title",
-        ]);
-
-        $this->crud->addField([
-            'name' => 'description',
-            'type' => 'textarea',
-            'label' => "Description",
-        ]);
-
-        $this->crud->addField([ // Upload
-            'name' => 'icon',
-            'hint' => __('Only Image type is allowed. Image should be of maximum 2MB. Only JPEG,JPG and PNG image types are allowed'),
-            'label' => __('Icon'),
-            'type' => 'upload',
-            'upload' => true,
         ]);
 
         $this->crud->addField([

@@ -1,9 +1,9 @@
 <?php namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\PetTypeRequest;
+use App\Http\Requests\FacilityRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
-class PetTypeCrudController extends CrudController
+class RoomCrudController extends CrudController
 {
 
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
@@ -14,56 +14,35 @@ class PetTypeCrudController extends CrudController
 
     public function setup()
     {
-        $this->crud->setModel("App\Models\PetType");
-        $this->crud->setRoute("admin/pet-type");
-        $this->crud->setEntityNameStrings('pet type', 'pet types');
+        $this->crud->setModel("App\Models\Room");
+        $this->crud->setRoute("admin/room");
+        $this->crud->setEntityNameStrings('room', 'rooms');
     }
 
     public function setupListOperation()
     {
         $this->crud->addColumn([
-            'name' => 'title',
-            'label' => __('Title'),
-        ]);
-        $this->crud->addColumn([
-            'name' => 'description',
-            'label' => __('Description'),
+            'name' => 'name',
+            'label' => __('Name'),
         ]);
     }
 
     public function setupCreateOperation()
     {
-        $this->crud->setValidation(PetTypeRequest::class);
+        $this->crud->setValidation(FacilityRequest::class);
 
         $this->crud->addField([
-            'name' => 'title',
+            'name' => 'name',
             'type' => 'text',
-            'label' => "Title",
-        ]);
-
-        $this->crud->addField([
-            'name' => 'description',
-            'type' => 'textarea',
-            'label' => "Description",
+            'label' => "Name",
         ]);
 
         $this->crud->addField([ // Upload
-            'name' => 'icon',
+            'name' => 'image',
             'hint' => __('Only Image type is allowed. Image should be of maximum 2MB. Only JPEG,JPG and PNG image types are allowed'),
             'label' => __('Icon'),
             'type' => 'upload',
             'upload' => true,
-        ]);
-
-        $this->crud->addField([
-            'name' => 'status',
-            'type' => 'select_from_array',
-            'label' => "Status",
-            'options' => [
-                // the key will be stored in the db, the value will be shown as label;
-                "0" => "In-Active",
-                "1" => "Active",
-            ],
         ]);
     }
 
