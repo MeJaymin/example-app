@@ -6,10 +6,13 @@ use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Role extends Authenticatable
+class Hostel extends Authenticatable
 {
     use CrudTrait;
     use HasFactory;
+
+    protected $table = 'hostel_information';
+    protected $primaryKey = 'id';
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +21,13 @@ class Role extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'status',
+        'address',
+        'phone',
+        'pincode',
+        'latitude',
+        'longitude',
+        'location_id',
+        'user_id',
     ];
 
     /**

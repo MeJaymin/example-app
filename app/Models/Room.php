@@ -28,6 +28,7 @@ class Room extends Authenticatable
         'room_number',
         'no_of_rooms',
         'status',
+        'hostel_id',
     ];
 
     /**

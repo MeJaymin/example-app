@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PetBreedRequest extends FormRequest
+class RoomRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,10 @@ class PetBreedRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:255',
+            'title' => 'required',
+            'max_pet' => 'required',
+            'min_pet' => 'required',
+            'no_of_rooms' => 'required',
             'status' => 'required',
         ];
     }
