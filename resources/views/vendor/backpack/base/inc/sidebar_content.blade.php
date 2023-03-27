@@ -19,5 +19,5 @@
     <a class="nav-link" href="{{ backpack_url('room') }}"><i class="nav-icon la la-question"></i> Room</a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="{{ backpack_url('room-image') }}"><i class="nav-icon la la-question"></i> Room Image</a>
+    <a class="nav-link" href="{{ backpack_url('location') }}"><i class="nav-icon la la-question"></i> Location</a>
 </li>
