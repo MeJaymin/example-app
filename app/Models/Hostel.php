@@ -28,6 +28,8 @@ class Hostel extends Authenticatable
         'longitude',
         'location_id',
         'user_id',
+        'status',
+        'is_home_page',
     ];
 
     /**
