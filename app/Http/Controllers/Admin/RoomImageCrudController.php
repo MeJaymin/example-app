@@ -32,7 +32,7 @@ class RoomImageCrudController extends CrudController
     {
         $this->crud->setValidation(RoomImageRequest::class);
 
-        $this->crud->addField([ // Upload
+        $this->crud->addField([ // Upload Multiple File
             'name' => 'title',
             'label' => 'Images',
             'type' => 'upload_multiple',
